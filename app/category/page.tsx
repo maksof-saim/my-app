@@ -1,4 +1,4 @@
-import prisma from "@/prisma/db"
+import prisma from "@/lib/db";
 import CategoryPage from "../components/category/category-table";
 
 export default async () => {
@@ -9,6 +9,5 @@ export default async () => {
             categoryPrice: true
         }
     });
-    console.log(data);
     return <CategoryPage data={data} />
 }

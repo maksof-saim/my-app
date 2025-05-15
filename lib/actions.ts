@@ -1,14 +1,24 @@
 "use server"
 
-import prisma from "@/prisma/db"
 import { revalidatePath } from "next/cache"
+import prisma from "./db"
 
 
-export const createCategory = async (categoryName: string, categoryPrice: string) => {
+export const createCategory = async (
+    input: {
+        categoryName: string
+        categoryPrice: string
+    }) => {
     await prisma.category.create({
-        data: {
-            categoryName,
-            categoryPrice
+        data: input
+    })
+    revalidatePath("/category")
+}
+
+export const deleteCategory = async (categoryId: number) => {
+    await prisma.category.delete({
+        where: {
+            categoryId: categoryId
         }
     })
     revalidatePath("/category")

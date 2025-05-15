@@ -10,7 +10,7 @@ interface Product {
 }
 
 
-const page = () => {
+const productPage = () => {
 
     const [products, setProducts] = useState<Product[]>([]);
 
@@ -47,4 +47,4 @@ const page = () => {
     )
 }
 
-export default page
+export default productPage
